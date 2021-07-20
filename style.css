@@ -1,0 +1,947 @@
+/*  =========  RESET  ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+/*  =========  Variables  ====== */
+:root {
+  --header-height: 3rem;
+
+  /* colors */
+  --hue: 159;
+
+  /* HSL color mode */
+  --base-color: hsl(var(--hue) 36% 57%);
+  --base-color-second: hsl(var(--hue) 65% 88%);
+  --base-color-alt: hsl(var(--hue) 57% 53%);
+  --title-color: hsl(var(--hue) 41% 10%);
+  --text-color: hsl(0 0% 46%);
+  --text-color-light: hsl(0 0% 98%);
+  --body-color: hsl(0 0% 98%);
+
+  /* Tamanho das Fontes */
+  --title-size: 1.7rem;
+  --subtitle-size: 1.375rem;
+  --txt-size: 1.2rem;
+  --txt1-size: 0.9rem;
+
+  /* Fontes dos caracteres */
+  --title-font: 'Poppins', sans-serif;
+  --subtitle-font: 'Poppins', sans-serif;
+  --txt-font: 'DM Sans', sans-serif;
+  --txt1-font: 'DM Sans', sans-serif;
+}
+
+/*  =========  BASE  ====== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font: 400 var(--txt-size) var(--txt-font);
+  color: var(--text-color);
+  background: var(--body-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+.title {
+  font: 700 var(--title-size) var(--title-font);
+  color: var(--title-color);
+  -webkit-font-smoothing: auto;
+}
+
+.button {
+  background: var(--base-color);
+  color: var(--text-color-light);
+  height: 3.5rem;
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  margin-right: 1rem;
+  border-radius: 0.25rem;
+  font: 500 var(--txt-size) var(--txt-font);
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background: var(--base-color-alt);
+  font-size: 1.4rem;
+}
+
+.divider-1 {
+  height: 15px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 36%, 57%, 1) 0%,
+    hsla(var(--hue), 65%, 88%, 0.34) 100%
+  );
+}
+
+.divider-2 {
+  height: 15px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 65%, 88%, 0.34),
+    hsla(var(--hue), 36%, 57%, 1)
+  );
+}
+
+.divider-fim {
+  height: 1px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 36%, 57%, 1) 0%,
+    hsla(var(--hue), 65%, 88%, 0.34) 100%
+  );
+}
+
+/*  =========  Layout  ====== */
+.container {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.section {
+  padding: 3rem 0;
+}
+
+.section .title {
+  margin-bottom: 1rem;
+  font-size: var(--title-size);
+}
+
+.section .subtitle {
+  font-size: var(--subtitle-size);
+}
+
+.section .txt {
+  font-size: var(--txt-size);
+}
+
+.section .txt1 {
+  font-size: var(--txt1-size);
+}
+
+.section header {
+  margin-bottom: 2rem;
+}
+
+.section header strong {
+  color: var(--base-color);
+}
+
+#header {
+  border-bottom: 1px solid #e4e4e4;
+  margin-bottom: 2rem;
+  display: flex;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: var(--body-color);
+  width: 100%;
+}
+
+#header.scroll {
+  background: rgb(240, 250, 250);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.253);
+}
+
+main {
+  margin-top: calc(var(--header-height) + 0.5rem);
+}
+
+/*  =========  Logo  ====== */
+.logo {
+  font: 700 1.1rem var(--title-font);
+  color: var(--title-color);
+}
+
+.logo span {
+  color: var(--base-color);
+}
+
+.logo-alt {
+  color: rgb(255, 255, 255);
+  font-size: 1.5rem;
+}
+
+.logo-alt span {
+  color: var(--title-color);
+}
+
+/*  =========  Navegação  ====== */
+nav {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+nav ul li {
+  text-align: center;
+}
+
+nav ul li .title {
+  font-size: 1.25rem;
+}
+
+nav ul li img {
+  max-width: 12rem;
+}
+
+/* Esse (a) é o icone clicavel do menu (inicio sobre apt...) */
+nav ul li a {
+  transition: 0.2s;
+  position: relative;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: var(--base-color);
+  font-weight: bold;
+}
+
+nav ul li a::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: var(--base-color);
+
+  position: absolute;
+  left: 0;
+  bottom: -0.3rem;
+  transition: width 0.2s;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  width: 100%;
+}
+
+nav .menu {
+  opacity: 0;
+  visibility: hidden;
+  top: -20rem;
+  transition: 0.2s;
+}
+
+nav .menu ul {
+  display: none;
+}
+
+/* ----- MOSTRANDO O MENU ----- */
+nav.show .menu {
+  opacity: 1;
+  visibility: visible;
+
+  background: var(--body-color);
+
+  height: 100vh;
+  width: 100vw;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: grid;
+  place-content: center;
+}
+
+nav.show .menu ul {
+  display: grid;
+}
+
+nav.show ul.grid {
+  gap: 1.5rem;
+}
+
+/* ------- Toggle menu (tipo interruptor) ---*/
+.toggle {
+  color: var(--base-color);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+nav .icon-close {
+  visibility: hidden;
+  opacity: 0;
+
+  position: absolute;
+  top: -1.5rem;
+  right: 1.5rem;
+
+  transition: 0.2s;
+}
+
+nav.show div.icon-close {
+  visibility: visible;
+  opacity: 1;
+  top: 1.5rem;
+}
+
+/* ---------- HOME ------ */
+#home {
+  overflow: hidden;
+}
+
+#home .container {
+  margin: 0;
+}
+
+#home .image {
+  position: relative;
+}
+
+#home .image::before {
+  content: '';
+  height: 100%;
+  width: 100%;
+  background: var(--base-color-second);
+  position: absolute;
+  top: -16.8%;
+  left: 16.7%;
+  z-index: 0;
+}
+
+#home .image img {
+  position: relative;
+  right: 2rem;
+}
+
+#home .image img,
+#home .image::before {
+  border-radius: 0.25rem;
+}
+
+#home .text {
+  font: 700 var(--title-font) var(--title-size);
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#home .title {
+  text-align: center;
+}
+
+#home .title span {
+  color: var(--base-color);
+}
+
+#home .subtitle {
+  font: 400 var(--subtitle-size) var(--txt-font);
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+  text-align: center;
+}
+
+#home .text h1 {
+  margin-bottom: 0.5rem;
+}
+
+#home .text p {
+  margin-bottom: 1rem;
+}
+
+#home .button {
+  width: fit-content;
+  align-items: center;
+  margin: auto;
+}
+
+/*====  ABOUT ============================ */
+#about {
+  background: white;
+}
+
+#about .container {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+#about .glide .glide__arrow {
+  display: inline-flex;
+  margin-top: -5rem;
+  z-index: 2;
+  color: rgb(180, 161, 161);
+  text-transform: uppercase;
+  padding: 9px 12px;
+  background-color: transparent;
+  border: 1px solid rgb(211, 203, 203);
+  border-radius: 4px;
+  box-shadow: 0 0.25em 0.5em 0 rgba(199, 191, 191, 0.1);
+  text-shadow: 0 0.25em 0.5em rgba(233, 226, 226, 0.1);
+  opacity: 1;
+  cursor: pointer;
+  transition: opacity 150ms ease, border 300ms ease-in-out;
+  transform: translateY(-50%);
+  line-height: 1;
+}
+.glide__arrow:focus {
+  outline: none;
+}
+.glide__arrow:hover {
+  border-color: white;
+}
+.glide__arrow--left {
+  left: 1em;
+}
+.glide__arrow--right {
+  right: 1em;
+}
+.glide__arrow--disabled {
+  opacity: 0.33;
+}
+
+#about .text {
+  margin-top: 1rem;
+}
+
+#about .title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+#about .txt {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  text-align: justify;
+}
+
+/*====  SERVICES ============================ */
+
+/*  mexer aqui na parte header do 'Nossos Apartamentos' */
+#apartments .title {
+  text-align: center;
+  font-size: var(--title-size);
+}
+
+#apartments .txt {
+  text-align: justify;
+  font-size: var(--txt-size);
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#apartments .txt1 {
+  font-size: var(--txt1-size);
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#apartments .cards.grid {
+  gap: 0.5rem;
+}
+
+#apartments .card {
+  padding: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
+  border-bottom: 0.25rem solid var(--base-color);
+  border-radius: 0.25rem 0.25rem 0 0;
+  text-align: center;
+}
+
+#apartments .card .title {
+  font-size: 1.5rem;
+}
+
+#apartments .card .txt {
+  margin-bottom: 1rem;
+}
+
+#apartments .card a {
+  color: var(--text-color);
+}
+
+#apartments .card img {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/*====  Testimonials ============================ */
+#testimonials {
+  background: white;
+}
+
+#testimonials header {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#testimonials .title {
+  text-align: center;
+}
+
+#testimonials blockquote {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 2rem;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 0.25rem;
+}
+
+#testimonials blockquote a {
+  color: var(--title-color);
+}
+
+#testimonials blockquote p {
+  position: relative;
+  text-indent: 1.85rem;
+  margin-bottom: 1rem;
+}
+
+#testimonials blockquote p span {
+  font: 700 2.5rem serif;
+  position: absolute;
+  top: -0.95rem;
+  left: -1.85rem;
+  color: var(--base-color);
+}
+
+#testimonials cite {
+  display: flex;
+  color: var(--title-color);
+  align-items: center;
+  /* o font-style já é italico por padrao, entao nao precisa colocar ele aqui*/
+}
+
+#testimonials cite img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: cover;
+  clip-path: circle();
+  margin-right: 0.8rem;
+}
+
+/* -- SWIPE Testimonials --*/
+#testimonials .swiper-slide {
+  height: auto;
+  padding: 1rem 1rem;
+}
+
+#testimonials .swiper-pagination-bullet {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+#testimonials .swiper-pagination-bullet-active {
+  background: var(--base-color);
+}
+
+/*====  Maps ============================ */
+#map .grid {
+  min-height: 17rem;
+  text-align: center;
+}
+
+#map .txt {
+  text-align: justify;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#map .imaps {
+  margin: auto;
+  width: fit-content;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#map .imaps i {
+  font-size: 5rem;
+  color: var(--base-color);
+}
+
+#map .imaps i:hover {
+  font-size: 6rem;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 1);
+  border-radius: 3.5rem;
+}
+
+#map .maps {
+  display: none;
+
+  box-shadow: 10px 10px 12px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem 0.25rem 0 0;
+}
+
+/*====  Contatos ============================ */
+
+#contact .title {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#contact .txt {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#contact .txt1 {
+  font-size: 1.2;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+#contact i {
+  font-size: 1.6rem;
+  color: var(--base-color);
+}
+
+#contact .social a {
+  transition: 0.25s;
+  align-items: center;
+  margin-left: 1.5rem;
+}
+
+#contact .social a:hover {
+  transform: translateY(-6px);
+}
+
+/*  ----- Footer ---- */
+footer {
+  background: var(--base-color);
+}
+
+footer.section {
+  padding: 0.5rem 0;
+}
+
+footer .grid {
+  margin: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+footer .logo {
+  display: inline-block;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+footer .brand p {
+  font-size: 0.8rem;
+  color: rgb(250, 250, 250);
+  margin-bottom: 0.35rem;
+}
+
+footer .social p {
+  margin-left: -1rem;
+  color: rgb(250, 250, 250);
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Botoes laterais */
+.whats {
+  background: rgb(46, 230, 39);
+  position: fixed;
+  right: 1rem;
+  top: 5rem;
+  font-size: 1.5rem;
+  color: rgb(236, 243, 236);
+  padding: 0.3rem;
+  clip-path: circle();
+
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.25s;
+  transform: translateX(100%);
+}
+
+.whats.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.arrowUp {
+  background: var(--base-color);
+  position: fixed;
+  right: 0.9rem;
+  bottom: 0.9rem;
+  font-size: 0.8rem;
+  color: rgb(236, 243, 236);
+  padding: 0.3rem;
+  clip-path: circle();
+
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.25s;
+  transform: translateY(100%);
+}
+
+.arrowUp.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+/*   RESPONSIVO  */
+/* ----- Media Wuerries ----- */
+/* estra larger devices: 1200 > */
+@media (min-width: 1200px) {
+  /* ---- Tamanho do espaçamento 'top' ---*/
+  .section {
+    padding: 5rem 0;
+  }
+  /* ---- Aumentando o Tamanho das Letras ---*/
+  .section .title {
+    margin-bottom: 1rem;
+    font-size: 2.4rem;
+  }
+
+  .section .txt {
+    font-size: 1.7rem;
+  }
+
+  .section .txt1 {
+    font-size: 1.25rem;
+  }
+
+  nav .menu ul li a.title {
+    font-size: 1rem;
+  }
+
+  /* ---- HOME --- Mexendo nas paginas---*/
+
+  /* ---- ABOUT --- Mexendo nas paginas---*/
+
+  /* ---- APARTMENTS --- Mexendo nas paginas---*/
+
+  /* ---- CONTACT --- Não precisa mexer---*/
+}
+/* larger devices: 1023 > */
+@media (min-width: 1020px) {
+  /* ---- Tamanho do espaçamento 'top' ---*/
+  .section {
+    padding: 4rem 0;
+  }
+  /* ---- Aumentando o Tamanho das Letras ---*/
+  .section .title {
+    margin-bottom: 1rem;
+    font-size: 2.4rem;
+  }
+
+  .section .txt {
+    font-size: 1.7rem;
+  }
+
+  .section .txt1 {
+    font-size: 1.25rem;
+  }
+
+  /* ---- Mexendo na logo no cabeçario apenas---*/
+  #header .logo {
+    margin-left: 1rem;
+    font-size: 1.25rem;
+  }
+
+  /* ---- Mexendo no MENU ---*/
+  nav .menu {
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+  }
+
+  nav .menu ul {
+    display: flex;
+    gap: 1rem;
+    margin-right: 1rem;
+  }
+
+  nav ul li img {
+    display: none;
+  }
+
+  nav .menu ul li a.title {
+    font-size: 1.05rem;
+  }
+
+  nav .icon-menu {
+    display: none;
+  }
+
+  /* ---- HOME --- Mexendo nas paginas---*/
+  #home .container {
+    grid-auto-flow: column;
+    align-items: center;
+  }
+
+  #home .image {
+    order: 1;
+    min-width: 32rem;
+    margin-left: 3rem;
+  }
+
+  #home .text {
+    order: 0;
+    max-width: 40rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
+  /* ---- ABOUT --- Mexendo nas paginas---*/
+  #about .container {
+    align-items: center;
+  }
+
+  #about .text {
+    text-align: center;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  /* ---- APARTMENTS --- Mexendo nas paginas---*/
+  #apartments .container {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  #apartments .title {
+    font-size: 2.4rem;
+  }
+
+  #apartments .txt {
+    font-size: 1.7rem;
+  }
+
+  #apartments.card {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* ---- TESTIMONIALS --- como tem swiper, é feito somente com o breakpoint no JS ---*/
+  #testimonials .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #testimonials .title {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  /* ---- MAPS ------*/
+  #map .grid {
+    height: auto;
+  }
+
+  #map .txt {
+    margin-left: 2.75rem;
+    margin-right: 2.75rem;
+  }
+
+  #map .imaps {
+    display: none;
+  }
+
+  #map .maps {
+    display: block;
+    margin-top: 2rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
+
+  /* ---- CONTACT -----*/
+  #contact .social a {
+    font-size: 3rem;
+    display: inline-block;
+    width: fit-content;
+    margin-left: 4.5rem;
+  }
+  /* botao lateral do whatsapp */
+  .whats.show {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .arrowUp {
+    font-size: 1rem;
+  }
+}
+
+/* medium devices: tablet> */
+@media (min-width: 600px) {
+  /*  Apartamentos */
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  /*  mapas */
+  #map .imaps {
+    display: none;
+  }
+
+  #map .maps {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  /*  Contatos */
+  #contact .txt1 {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+  }
+
+  #contact .social i {
+    font-size: 3rem;
+    display: inline-block;
+    width: fit-content;
+    margin-left: 3.5rem;
+  }
+
+  /*  Footer  */
+  footer.section {
+    padding: 2rem 0;
+  }
+
+  footer .container {
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 1.5rem;
+  }
+
+  footer .logo-alt {
+    font-size: 1.5rem;
+  }
+
+  footer .container p {
+    font-size: 1.15rem;
+  }
+
+  footer .social {
+    margin-right: 1rem;
+    text-align: right;
+  }
+}

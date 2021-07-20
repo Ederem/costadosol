@@ -1,0 +1,529 @@
+/*  =========  RESET  ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+:root {
+  --header-height: 2.5rem;
+
+  /* colors */
+  --hue: 159;
+
+  /* HSL color mode */
+  --base-color: hsl(var(--hue) 36% 57%);
+  --base-color-second: hsl(var(--hue) 65% 88%);
+  --base-color-alt: hsl(var(--hue) 57% 53%);
+  --title-color: hsl(var(--hue) 41% 10%);
+  --text-color: hsl(0 0% 46%);
+  --text-color-light: hsl(0 0% 98%);
+  --body-color: hsl(0 0% 98%);
+
+  /* Tamanho das Fontes */
+  --title-size: 1.5rem;
+  --subtitle-size: 1.25rem;
+  --txt-size: 1.15rem;
+  --txt1-size: 0.9rem;
+
+  /* Fontes dos caracteres */
+  --title-font: 'Poppins', sans-serif;
+  --subtitle-font: 'Poppins', sans-serif;
+  --txt-font: 'DM Sans', sans-serif;
+  --txt1-font: 'DM Sans', sans-serif;
+}
+/* ========= BASE ====== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* body {
+  font: 400 var(--txt-size) var(--txt-font);
+  color: var(--text-color);
+  background: var(--body-color);
+  -webkit-font-smoothing: antialiased;
+  } */
+
+.title {
+  font: 700 var(--title-size) var(--title-font);
+  color: var(--title-color);
+  -webkit-font-smoothing: auto;
+}
+
+/* divisorias */
+
+.divider-1 {
+  height: 15px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 36%, 57%, 1) 0%,
+    hsla(var(--hue), 65%, 88%, 0.34) 100%
+  );
+}
+
+.divider-2 {
+  height: 15px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 65%, 88%, 0.34),
+    hsla(var(--hue), 36%, 57%, 1)
+  );
+}
+
+.divider-fim {
+  height: 1px;
+  background: linear-gradient(
+    270deg,
+    hsla(var(--hue), 36%, 57%, 1) 0%,
+    hsla(var(--hue), 65%, 88%, 0.34) 100%
+  );
+}
+
+main {
+  margin-top: calc(var(--header-height) + 0.5rem);
+}
+
+/* ==== Class SECTION  (Layout) ==== */
+.container {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.section {
+  padding: 1rem 0;
+}
+
+.section .title {
+  margin-bottom: 1rem;
+  font-size: var(--title-size);
+}
+
+.section .subtitle {
+  font-size: var(--subtitle-size);
+  font-style: var(--subtitle-font);
+}
+
+.section .txt {
+  font-size: var(--txt-size);
+  font-style: var(--txt-font);
+}
+
+.section .txt1 {
+  font-size: var(--txt1-size);
+  font-style: var(--txt1-font);
+}
+
+/*
+.section header {
+  margin-bottom: 2rem;
+} */
+
+.section header strong {
+  color: var(--base-color);
+}
+
+/*  === Cabeçario fixo === */
+#header {
+  /* border-bottom: 1px solid #e4e4e4;
+  margin-bottom: 2rem; */
+  display: flex;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: var(--body-color);
+  width: 100%;
+}
+
+#header.scroll {
+  background: rgb(240, 250, 250);
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.253);
+}
+
+/* ===  logotipo  === */
+.logo {
+  font: 700 1rem var(--title-font);
+  color: var(--title-color);
+}
+
+.logo span {
+  color: var(--base-color);
+}
+
+.logo-alt {
+  font: 700 1rem var(--title-font);
+  color: rgb(255, 255, 255);
+}
+
+.logo-alt span {
+  color: var(--title-color);
+}
+
+body {
+  font: 400 var(--txt-size) var(--txt-font);
+  color: var(--text-color);
+  background: var(--body-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+/*  =========  Navegação  ====== */
+nav {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+nav ul li {
+  text-align: center;
+}
+
+nav ul li .title {
+  font-size: 1.25rem;
+}
+
+nav ul li img {
+  max-width: 12rem;
+}
+
+/* Esse (a) é o icone clicavel do menu (inicio sobre apt...) */
+nav ul li a {
+  transition: 0.2s;
+  position: relative;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: var(--base-color);
+  font-weight: bold;
+}
+
+nav ul li a::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: var(--base-color);
+
+  position: absolute;
+  left: 0;
+  bottom: -0.3rem;
+  transition: width 0.2s;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+  width: 100%;
+}
+
+nav .menu {
+  opacity: 0;
+  visibility: hidden;
+  top: -20rem;
+  transition: 0.2s;
+}
+
+nav .menu ul {
+  display: none;
+}
+
+/* ----- MOSTRANDO O MENU ----- */
+nav.show .menu {
+  opacity: 1;
+  visibility: visible;
+
+  background: var(--body-color);
+
+  height: 100vh;
+  width: 100vw;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: grid;
+  place-content: center;
+}
+
+nav.show .menu ul {
+  display: grid;
+}
+
+nav.show ul.grid {
+  gap: 1.5rem;
+}
+
+/* ------- Toggle menu (tipo interruptor) ---*/
+.toggle {
+  color: var(--base-color);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+nav .icon-close {
+  visibility: hidden;
+  opacity: 0;
+
+  position: absolute;
+  top: -1.5rem;
+  right: 1.5rem;
+
+  transition: 0.2s;
+}
+
+nav.show div.icon-close {
+  visibility: visible;
+  opacity: 1;
+  top: 1.5rem;
+}
+
+/*  containers  */
+.container {
+  padding: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  box-shadow: 0px 0px 12px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 0.25rem 0.25rem 0.25rem 0.25rem;
+}
+
+/* --- apartamentos 201 e 203 --- */
+#primeiropiso .subtitle {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#primeiropiso .txt {
+  margin-bottom: 0.5rem;
+  text-align: justify;
+}
+
+#primeiropiso .txt1 {
+  margin-bottom: 1.5rem;
+}
+
+/*  --- apartamento 102 ---  */
+
+#terreo .subtitle {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#terreo .txt {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+#terreo .glide__bullets {
+  position: relative;
+  z-index: 2;
+  bottom: 2em;
+  left: 50%;
+  display: inline-flex;
+  list-style: none;
+  transform: translateX(-50%);
+}
+
+/*  apartamentos 101 e 103 */
+
+#doisquartos .subtitle {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#doisquartos .txt {
+  margin-bottom: 0.5rem;
+  text-align: justify;
+}
+
+#doisquartos .txt1 {
+  margin-bottom: 1.5rem;
+}
+
+#doisquartos .glide__bullets {
+  position: relative;
+}
+
+/*  apartamentos DUPLEX */
+
+#duplex .subtitle {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#duplex .txt {
+  margin-bottom: 0.5rem;
+  text-align: justify;
+}
+
+#duplex .txt1 {
+  margin-bottom: 1.5rem;
+}
+
+#duplex .glide__bullets {
+  position: relative;
+}
+
+/*  ----- Footer ---- */
+footer {
+  background: var(--base-color);
+}
+
+footer .grid {
+  display: grid;
+  gap: 1rem;
+}
+
+/*footer.section {
+  padding: 0.5rem 0;
+} */
+
+footer .grid {
+  margin: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+* footer .logo-alt {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+footer .brand ul li {
+  font-size: 1rem;
+  color: rgb(250, 250, 250);
+  margin-bottom: 0.5rem;
+}
+
+footer .brand ul li a {
+  color: rgb(250, 250, 250);
+  font-size: 1rem;
+}
+
+footer .social ul li {
+  margin-bottom: 0.5rem;
+}
+
+footer .social ul li a {
+  color: rgb(250, 250, 250);
+  font-size: 1rem;
+}
+
+footer .icon-mail {
+  display: none;
+}
+
+/* botaofix */
+.whatsapp {
+  background: rgb(46, 230, 39);
+  position: fixed;
+  right: 1rem;
+  top: 30rem;
+  font-size: 1rem;
+  color: rgb(236, 243, 236);
+  padding: 0.8rem;
+  clip-path: ellipse();
+  align-items: center;
+  text-align: center;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.25s;
+  transform: translateX(100%);
+}
+
+.whatsapp.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+@media (min-width: 1020px) {
+  /* ---- Mexendo na logo no cabeçario apenas---*/
+  #header .logo {
+    margin-left: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .section .subtitle {
+    font-size: 1.75rem;
+  }
+
+  .section .txt {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .section .txt1 {
+    font-size: 1.17rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  /* ---- Mexendo no MENU ---*/
+  nav .menu {
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+  }
+
+  nav .menu ul {
+    display: flex;
+    gap: 1.2rem;
+    margin-right: 1rem;
+  }
+
+  nav ul li img {
+    display: none;
+  }
+
+  nav .menu ul li a.title {
+    font-size: 1rem;
+  }
+
+  nav .icon-menu {
+    display: none;
+  }
+}
+
+@media (min-width: 600px) {
+  /*  Footer  */
+  footer.section {
+    padding: 2rem 0;
+  }
+
+  footer .container {
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer .container p {
+    font-size: 1.15rem;
+  }
+
+  footer .social {
+    text-align: right;
+  }
+
+  footer .icon-mail {
+    display: inline-flex;
+  }
+}
